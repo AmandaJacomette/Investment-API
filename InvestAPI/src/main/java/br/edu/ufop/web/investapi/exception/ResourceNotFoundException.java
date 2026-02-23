@@ -1,0 +1,8 @@
+package br.edu.ufop.web.investapi.exception;
+
+public class ResourceNotFoundException extends RuntimeException {
+
+    public ResourceNotFoundException(String message) {
+        super(message);
+    }
+}

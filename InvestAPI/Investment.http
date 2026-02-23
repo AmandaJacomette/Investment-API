@@ -1,0 +1,81 @@
+### =========================================
+### Variável base da API
+### =========================================
+
+@baseUrl = http://localhost:3000
+
+
+### =========================================
+### 1️⃣ Criar investimento - AÇÃO
+### =========================================
+
+POST {{baseUrl}}/investments
+Content-Type: application/json
+
+{
+  "type": "ACAO",
+  "symbol": "BBAS3",
+  "quantity": 100,
+  "purchasePrice": 19.68,
+  "purchaseDate": "2025-07-31"
+}
+
+
+### =========================================
+### 2️⃣ Criar investimento - CRIPTO
+### =========================================
+
+POST {{baseUrl}}/investments
+Content-Type: application/json
+
+{
+  "type": "CRIPTO",
+  "symbol": "BTC",
+  "quantity": 2,
+  "purchasePrice": 150000.00,
+  "purchaseDate": "2025-06-15"
+}
+
+
+### =========================================
+### 3️⃣ Listar todos os investimentos
+### =========================================
+
+GET {{baseUrl}}/investments
+
+
+### =========================================
+### 4️⃣ Filtrar por tipo
+### =========================================
+
+GET {{baseUrl}}/investments?type=ACAO
+
+
+### =========================================
+### 5️⃣ Atualizar investimento (id = 1)
+### =========================================
+
+PUT {{baseUrl}}/investments/1
+Content-Type: application/json
+
+{
+  "type": "ACAO",
+  "symbol": "BBAS3",
+  "quantity": 150,
+  "purchasePrice": 20.00,
+  "purchaseDate": "2025-07-31"
+}
+
+
+### =========================================
+### 6️⃣ Resumo da carteira
+### =========================================
+
+GET {{baseUrl}}/investments/summary
+
+
+### =========================================
+### 7️⃣ Deletar investimento (id = 1)
+### =========================================
+
+DELETE {{baseUrl}}/investments/1
