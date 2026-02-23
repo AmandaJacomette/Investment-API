@@ -1,9 +1,28 @@
 # 📊 Investment API - Gerenciamento de Carteira de Investimentos
 
+![Java](https://img.shields.io/badge/Java-17-orange)  
+![Spring Boot](https://img.shields.io/badge/SpringBoot-3.x-brightgreen)  
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-blue)  
+![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED)  
+![Maven](https://img.shields.io/badge/Maven-Build-red)
+
 API RESTful desenvolvida com **Java 17 + Spring Boot 3** para gerenciamento de carteira de investimentos.
 
 Permite cadastrar, listar, atualizar e remover ativos financeiros, além de gerar um resumo da carteira.
 
+---
+
+## 📌 Objetivo do Projeto
+
+Este projeto foi desenvolvido para aplicar conceitos de:
+
+- Arquitetura em camadas  
+- Desenvolvimento de APIs REST  
+- Persistência com JPA/Hibernate  
+- Banco de dados relacional PostgreSQL  
+- Containerização com Docker  
+- Separação entre Entity e DTO
+  
 ---
 
 ## 🚀 Tecnologias Utilizadas
