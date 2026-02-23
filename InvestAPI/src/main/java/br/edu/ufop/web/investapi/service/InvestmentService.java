@@ -20,20 +20,34 @@ public class InvestmentService {
     }
 
     public InvestmentResponseDTO create(InvestmentRequestDTO dto) {
+
+        validate(dto);
+
         Investment investment = mapToEntity(dto);
-        return mapToResponse(repository.save(investment));
+        Investment saved = repository.save(investment);
+
+        return mapToResponse(saved);
     }
 
     public List<InvestmentResponseDTO> findAll(InvestmentType type) {
-        List<Investment> investments =
-                type == null ? repository.findAll() : repository.findByType(type);
 
-        return investments.stream().map(this::mapToResponse).toList();
+        List<Investment> investments =
+                (type == null)
+                        ? repository.findAll()
+                        : repository.findByType(type);
+
+        return investments.stream()
+                .map(this::mapToResponse)
+                .toList();
     }
 
     public InvestmentResponseDTO update(Long id, InvestmentRequestDTO dto) {
+
+        validate(dto);
+
         Investment investment = repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Ativo não encontrado"));
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Ativo não encontrado"));
 
         investment.setType(dto.getType());
         investment.setSymbol(dto.getSymbol());
@@ -41,27 +55,34 @@ public class InvestmentService {
         investment.setPurchasePrice(dto.getPurchasePrice());
         investment.setPurchaseDate(dto.getPurchaseDate());
 
-        return mapToResponse(repository.save(investment));
+        Investment updated = repository.save(investment);
+
+        return mapToResponse(updated);
     }
 
     public void delete(Long id) {
-        if (!repository.existsById(id)) {
-            throw new ResourceNotFoundException("Ativo não encontrado");
-        }
-        repository.deleteById(id);
+
+        Investment investment = repository.findById(id)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Ativo não encontrado"));
+
+        repository.delete(investment);
     }
 
     public SummaryDTO getSummary() {
+
         List<Investment> investments = repository.findAll();
 
         BigDecimal totalInvested = BigDecimal.ZERO;
         Map<InvestmentType, BigDecimal> totalByType = new HashMap<>();
 
         for (Investment inv : investments) {
+
             BigDecimal total = inv.getPurchasePrice()
                     .multiply(BigDecimal.valueOf(inv.getQuantity()));
 
             totalInvested = totalInvested.add(total);
+
             totalByType.merge(inv.getType(), total, BigDecimal::add);
         }
 
@@ -73,18 +94,46 @@ public class InvestmentService {
         return summary;
     }
 
+    private void validate(InvestmentRequestDTO dto) {
+
+        if (dto.getType() == null) {
+            throw new IllegalArgumentException("Tipo do investimento é obrigatório");
+        }
+
+        if (dto.getSymbol() == null || dto.getSymbol().isBlank()) {
+            throw new IllegalArgumentException("Símbolo do ativo é obrigatório");
+        }
+
+        if (dto.getQuantity() <= 0) {
+            throw new IllegalArgumentException("Quantidade deve ser maior que zero");
+        }
+
+        if (dto.getPurchasePrice() == null ||
+                dto.getPurchasePrice().compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException("Preço deve ser maior que zero");
+        }
+
+        if (dto.getPurchaseDate() == null) {
+            throw new IllegalArgumentException("Data de compra é obrigatória");
+        }
+    }
+
     private Investment mapToEntity(InvestmentRequestDTO dto) {
+
         Investment investment = new Investment();
         investment.setType(dto.getType());
         investment.setSymbol(dto.getSymbol());
         investment.setQuantity(dto.getQuantity());
         investment.setPurchasePrice(dto.getPurchasePrice());
         investment.setPurchaseDate(dto.getPurchaseDate());
+
         return investment;
     }
 
     private InvestmentResponseDTO mapToResponse(Investment investment) {
+
         InvestmentResponseDTO dto = new InvestmentResponseDTO();
+
         dto.setId(investment.getId());
         dto.setType(investment.getType());
         dto.setSymbol(investment.getSymbol());
@@ -96,6 +145,7 @@ public class InvestmentService {
                 .multiply(BigDecimal.valueOf(investment.getQuantity()));
 
         dto.setTotalInvested(total);
+
         return dto;
     }
 }

@@ -14,10 +14,10 @@ Content-Type: application/json
 
 {
   "type": "ACAO",
-  "symbol": "BBAS3",
+  "symbol": "BWS3",
   "quantity": 100,
-  "purchasePrice": 19.68,
-  "purchaseDate": "2025-07-31"
+  "purchasePrice": 10.00,
+  "purchaseDate": "2026-02-21"
 }
 
 
