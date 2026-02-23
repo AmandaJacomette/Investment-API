@@ -1,4 +1,4 @@
-<h1 align="center">💰 InvestAPI — Sistema de Gerenciamento de Investimentos</h1>
+<h1 align="center">💰 InvestPRO — Sistema de Gerenciamento de Investimentos</h1>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Spring%20Boot-3.x-brightgreen?style=for-the-badge" />
