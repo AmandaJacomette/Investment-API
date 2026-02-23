@@ -1,0 +1,25 @@
+.sidebar {
+  width: 240px;
+  background: var(--bg-secondary);
+  min-height: 100vh;
+  padding: 40px 20px;
+  border-right: 1px solid var(--border);
+}
+
+.logo {
+  color: var(--primary);
+  margin-bottom: 50px;
+}
+
+nav a {
+  display: block;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+nav a:hover,
+nav .active {
+  color: var(--text);
+}
