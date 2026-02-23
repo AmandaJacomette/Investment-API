@@ -44,8 +44,8 @@ O projeto segue arquitetura em camadas:
 ### 1️⃣ Clonar o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/investment-api.git
-cd investment-api
+git clone https://github.com/AmandaJacomette/Investment-API.git
+cd Investment-API
 ```
 
 ---
