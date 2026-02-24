@@ -145,13 +145,21 @@ Retorna:
 ## 🧠 Regras de Negócio Implementadas
 
 ✔ Quantidade deve ser maior que zero
+
 ✔ Preço deve ser maior que zero
+
 ✔ Tipo do investimento obrigatório
+
 ✔ Símbolo obrigatório
+
 ✔ Data obrigatória
+
 ✔ Exceção lançada quando ativo não encontrado
+
 ✔ Cálculo automático do total investido por ativo
+
 ✔ Agrupamento de valores por tipo no resumo
+
 
 ---
 
