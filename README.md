@@ -13,7 +13,7 @@
 
 ## 📚 Sobre o Projeto
 
-O **InvestAPI** é uma API REST desenvolvida para gerenciamento de investimentos financeiros.
+O **InvestPRO** é uma API REST desenvolvida para gerenciamento de investimentos financeiros.
 
 O sistema permite:
 
