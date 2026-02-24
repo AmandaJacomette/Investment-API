@@ -248,7 +248,7 @@ InvestApiApplication.java
 Após iniciar, a aplicação estará disponível em:
 
 ```
-http://localhost:8080
+http://localhost:3000
 ```
 
 ---
@@ -258,15 +258,4 @@ http://localhost:8080
 ```bash
 docker compose down
 ```
----
-
-## 🎯 Objetivos Acadêmicos Atendidos
-
-✔ Desenvolvimento de API REST
-✔ Aplicação de arquitetura em camadas
-✔ Persistência com banco relacional
-✔ Implementação de regras de negócio
-✔ Uso de DTO para desacoplamento
-✔ Containerização com Docker
-
 ---
